@@ -9,7 +9,12 @@ class MP3Importer
     end
 
     def files
-        Dir.children(self.path)
+        # changes directory to the path and looks at each file with .mp3 extension
+        file_name = Dir.chdir(self.path) do |file|
+            Dir.glob("*.mp3")
+        end
+        file_name
+        #Dir.children(self.path)
         #binding.pry
     end
 
