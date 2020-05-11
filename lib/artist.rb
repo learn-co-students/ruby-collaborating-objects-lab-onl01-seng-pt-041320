@@ -33,7 +33,7 @@ class Artist
   
   
    def self.find_or_create_by_name(name)
-        artist_name = self.all.find{|artist| artist.name == name}
+        artist_name = @@all.find{|artist| artist.name == name}
         if artist_name
             artist_name
         else
