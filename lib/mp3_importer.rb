@@ -7,11 +7,17 @@ class MP3Importer
   end
   
   def files
-    @path.scan(/\.mp3/)
-#    binding.pry
+    file = Dir.entries(@path)
+    file.find_all {|x|x.match(/\.mp3/)}
   end 
   
-  
+  def import 
+    files.each do |x|
+      Song.new_by_filename(x)
+ #   binding.pry
+    end
+  end 
+ 
   
   
 end
