@@ -1,3 +1,5 @@
+require "pry"
+
 describe 'Artist' do
 
   before(:example) {
@@ -23,6 +25,7 @@ describe 'Artist' do
   describe '.all' do
     it 'returns all existing Artist instances' do
       artist = Artist.new('Michael Jackson')
+  #    binding.pry
       expect(Artist.all).to eq([artist])
       prince = Artist.new('Prince')
       expect(Artist.all).to eq([artist, prince])
@@ -55,6 +58,7 @@ describe 'Artist' do
 
   describe '.find_or_create_by_name' do
     it 'always returns an Artist instance' do
+  #    binding.pry
       artist_1 = Artist.find_or_create_by_name("Michael Jackson")
       artist_2 = Artist.find_or_create_by_name("Michael Jackson")
       expect(artist_1).to be_an(Artist)
@@ -81,6 +85,7 @@ describe 'Artist' do
       piano_man = Song.new("Piano Man")
       artist.add_song(dirty_diana)
       artist.add_song(billie_jean)
+#      binding.pry
       expect{artist.print_songs}.to output("Dirty Diana\nBillie Jean\n").to_stdout
     end
   end
